@@ -12,12 +12,6 @@
     "datetime": "2020-02-10T08:42:15.718Z"
   },
   {
-    "message": "hello",
-    "author": "Kate",
-    "id": "meTMQ1FokJwbBpVk2M5WN",
-    "datetime": "08:44:45"
-  },
-  {
     "message": "How do you do?",
     "author": "Kate",
     "id": "6fDQo8w8afOnPt5da85c2",
@@ -40,5 +34,17 @@
     "author": "Dan",
     "id": "5J0HI_BiBRccVSuvT-oSF",
     "datetime": "2020-02-10T08:49:11.375Z"
+  },
+  {
+    "author": "John",
+    "message": "Hello, guys!",
+    "id": "Qx77_zsWkuQQOhKnXFFwB",
+    "datetime": "2020-02-10T10:07:44.328Z"
+  },
+  {
+    "author": "Kate",
+    "message": "How are you, John?",
+    "id": "eGPq5Dc_3H_03TddCBoXJ",
+    "datetime": "2020-02-10T10:08:44.008Z"
   }
 ]
