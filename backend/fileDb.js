@@ -29,33 +29,33 @@ const writeFile = (filename, data) => {
     })
 };
 
-const init = async () => {
-    try {
-        const fileContents = await readFile(filename);
-        data = JSON.parse(fileContents.toString());
-    } catch (e) {
-        console.log('Could not read file ' + filename);
-        data = [];
+
+module.exports = {
+    async init() {
+        try {
+            const fileContents = await readFile(filename);
+            data = JSON.parse(fileContents.toString());
+        } catch (e) {
+            console.log('Could not read file ' + filename);
+            data = [];
+        }
+    },
+
+    async getMessages() {
+        return data;
+    },
+
+    async addMessage(message) {
+        const date = new Date();
+        const datetime = date.toISOString();
+        message.id = nanoid();
+        message.datetime = datetime;
+        data.push(message);
+        await this.save();
+    },
+
+    async save() {
+        const fileContents = JSON.stringify(data, null, 2);
+        await writeFile(filename, fileContents);
     }
 };
-
-const getMessages = async () => {
-    return data;
-};
-
-const addMessage = async (message) => {
-    const date = new Date();
-    const datetime = date.toISOString();
-    message.id = nanoid();
-    message.datetime = datetime;
-    data.push(message);
-    await this.save();
-};
-
-const save = async () => {
-    const fileContents = JSON.stringify(data, null, 2);
-    await writeFile(filename, fileContents);
-};
-
-
-module.exports = {init, getMessages, addMessage, save};
