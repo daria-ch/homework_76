@@ -1,4 +1,10 @@
-import {FETCH_MESSAGES_FAILURE, FETCH_MESSAGES_SUCCESS, GET_LAST_DATETIME, SEND_MESSAGE_FAILURE} from "./actions";
+import {
+    SEND_MESSAGE_REQUEST,
+    FETCH_MESSAGES_FAILURE,
+    FETCH_MESSAGES_SUCCESS,
+    GET_LAST_DATETIME,
+    SEND_MESSAGE_FAILURE
+} from "./actions";
 
 const initialState = {
     messages: [],
@@ -14,6 +20,8 @@ const reducer = (state = initialState, action) => {
             return {...state, error: action.error};
         case SEND_MESSAGE_FAILURE:
             return {...state, error: action.error};
+        case SEND_MESSAGE_REQUEST:
+            return {...state, error: null};
         case GET_LAST_DATETIME:
             return {...state, lastDateTime: action.datetime};
         default:

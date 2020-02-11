@@ -46,18 +46,26 @@ class App extends Component {
             )
         });
 
+        let errorStyle = {
+            display: 'none',
+        };
 
         if (this.props.error) {
-
+            errorStyle = {
+                display: 'block',
+                width: '50%',
+                color: 'red',
+                textAlign: 'center',
+                margin: '0 auto'
+            }
         }
-
 
         return (
             <div className="App">
                 <div>
                     {messages}
                 </div>
-                <div className='error'>
+                <div style={errorStyle}>
                     {this.props.error}
                 </div>
                 <FormBlock
