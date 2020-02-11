@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
                 res.status(400).send({"error": "Date is incorrect!"});
             } else {
                 messages.forEach(message => {
-                    if (message.datetime > date) {
+                    if (message.datetime < date) {
                         lastMessages.push(message);
                     }
                 });
@@ -32,8 +32,7 @@ router.get('/', async (req, res) => {
             }
         }
     }
-)
-;
+);
 
 router.post('/', async (req, res) => {
     if (req.body.author === '' || req.body.message === '') {

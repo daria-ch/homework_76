@@ -7,13 +7,17 @@ import './App.css';
 
 class App extends Component {
 
-    componentDidMount() {
-        this.props.fetchMessages();
+    interval = null;
+
+    async componentDidMount() {
+        this.props.fetchMessages(this.props.lastDatetime);
+        this.interval = setInterval(() => this.props.fetchMessages(this.props.lastDatetime), 3000);
     }
+
 
     sendMessage = async message => {
         await this.props.sendMessage(message);
-        this.props.fetchMessages();
+        this.props.fetchMessages(this.props.lastDatetime);
     };
 
     render() {
@@ -57,11 +61,13 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-    messages: state.messages
+    messages: state.messages,
+    lastDatetime: state.lastDateTime,
+    error: state.error
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchMessages: () => dispatch(fetchMessages()),
+    fetchMessages: (datetime) => dispatch(fetchMessages(datetime)),
     sendMessage: (message) => dispatch(sendMessage(message))
 });
 
