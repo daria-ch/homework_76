@@ -4,3 +4,11 @@
     max-width: 1200px;
     margin: 0 auto;
 }
+
+.error {
+    display: block;
+    width: 50%;
+    color: red;
+    text-align: center;
+    margin: 0 auto;
+}

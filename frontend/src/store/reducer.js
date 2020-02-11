@@ -9,7 +9,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_MESSAGES_SUCCESS:
-            return {...state, messages: action.messages};
+            return {...state, messages: [...state.messages, ...action.messages]};
         case  FETCH_MESSAGES_FAILURE:
             return {...state, error: action.error};
         case SEND_MESSAGE_FAILURE:

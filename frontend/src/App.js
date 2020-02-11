@@ -43,14 +43,22 @@ class App extends Component {
                     text={message.message}
                     datetime={time}
                 />
-
             )
         });
+
+
+        if (this.props.error) {
+
+        }
+
 
         return (
             <div className="App">
                 <div>
                     {messages}
+                </div>
+                <div className='error'>
+                    {this.props.error}
                 </div>
                 <FormBlock
                     onSubmit={this.sendMessage}

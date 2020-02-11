@@ -9,21 +9,14 @@ router.get('/', async (req, res) => {
         const messages = await fileDb.getMessages();
         const date = req.query.datetime;
         const isDate = new Date(date);
-
         if (!date) {
-            messages.forEach(message => {
-                if (lastMessages.length < 30) {
-                    lastMessages.push(message)
-                }
-            });
-            res.send(lastMessages);
-            lastMessages = [];
+            res.send(messages.slice(-30));
         } else {
             if (isNaN(isDate.getDate()) === true) {
                 res.status(400).send({"error": "Date is incorrect!"});
             } else {
                 messages.forEach(message => {
-                    if (message.datetime < date) {
+                    if (isDate - new Date(message.datetime) < 0) {
                         lastMessages.push(message);
                     }
                 });
